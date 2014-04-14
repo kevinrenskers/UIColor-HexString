@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "UIColor-HexString"
-  s.version      = "1.0.1"
+  s.version      = "1.1.0"
   s.summary      = "Easy, Android-compatible hex strings to UIColor."
   s.homepage     = "https://github.com/kevinrenskers/UIColor-HexString"
   s.license      = { :type => 'BSD', :file => 'LICENSE' }
