@@ -1,5 +1,5 @@
 # UIColor-HexString
-Easy, Android-compatible hex strings to UIColor. Code from Micah Hainline, found on http://stackoverflow.com/questions/1560081/how-can-i-create-a-uicolor-from-a-hex-string/7180905#7180905. All I've done is package it for Cocoapods.
+Easy, Android-compatible hex strings to UIColor. Code from Micah Hainline, found on http://stackoverflow.com/questions/1560081/how-can-i-create-a-uicolor-from-a-hex-string/7180905#7180905. All I've done is package it for CocoaPods.
 
 Example:
 
