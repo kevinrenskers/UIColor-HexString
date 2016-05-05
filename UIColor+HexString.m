@@ -52,4 +52,59 @@
     return [UIColor colorWithRed: red green: green blue: blue alpha: alpha];
 }
 
+- (NSDictionary *)colorComponentsAsFloats
+{
+    CGFloat red, green, blue, alpha;
+    if ( ![self getRed:&red green:&green blue:&blue alpha:&alpha] )
+    {
+        [self getWhite:&red alpha:&alpha];
+        green = blue = red;
+    }
+    
+    return @{
+             @"red": @(red),
+             @"green": @(green),
+             @"blue": @(blue),
+             @"alpha": @(alpha),
+             };
+}
+
++ (NSNumber *)colorComponentFloatToInteger:(NSNumber *)floatValue
+{
+    return @( (unsigned int)(roundf( [floatValue floatValue] * 255 ) ) );
+}
+
+- (NSDictionary *)colorComponentsAsIntegers
+{
+    NSDictionary *colorComponentsAsFloats = [self colorComponentsAsFloats];
+    return @{
+             @"red": [UIColor colorComponentFloatToInteger:[colorComponentsAsFloats objectForKey:@"red"] ],
+             @"green": [UIColor colorComponentFloatToInteger:[colorComponentsAsFloats objectForKey:@"green"] ],
+             @"blue": [UIColor colorComponentFloatToInteger:[colorComponentsAsFloats objectForKey:@"blue"] ],
+             @"alpha": [UIColor colorComponentFloatToInteger:[colorComponentsAsFloats objectForKey:@"alpha"] ]
+             };
+}
+
+- (NSString *) hexString
+{
+    NSDictionary *colorComponentsAsIntegers = [self colorComponentsAsIntegers];
+    
+    return [NSString stringWithFormat:@"#%02x%02x%02x",
+            [ [colorComponentsAsIntegers objectForKey:@"red"] intValue],
+            [ [colorComponentsAsIntegers objectForKey:@"green"] intValue],
+            [ [colorComponentsAsIntegers objectForKey:@"blue"] intValue] ];
+}
+
+- (NSString *) hexStringWithAlpha
+{
+    NSDictionary *colorComponentsAsIntegers = [self colorComponentsAsIntegers];
+    
+    return [NSString stringWithFormat:@"#%02x%02x%02x%02x",
+            [ [colorComponentsAsIntegers objectForKey:@"alpha"] intValue],
+            [ [colorComponentsAsIntegers objectForKey:@"red"] intValue],
+            [ [colorComponentsAsIntegers objectForKey:@"green"] intValue],
+            [ [colorComponentsAsIntegers objectForKey:@"blue"] intValue] ];
+
+}
+
 @end
