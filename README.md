@@ -4,6 +4,10 @@ Easy, Android-compatible hex strings to UIColor. Code from Micah Hainline, found
 Example:
 
     [UIColor colorWithHexString:@"#2D9EDF"]
+    
+Or, in Swift:
+    
+    UIColor.init(hexString:"#2D9EDF")
 
 Has support for the following hex formats:
 
